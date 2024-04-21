@@ -20,7 +20,6 @@ body, .onepage-wrapper, html {
   display: block;
   position: relative;
   padding: 0;
-  -webkit-transform-style: preserve-3d;
 }
 
 .onepage-wrapper .section {
@@ -30,8 +29,8 @@ body, .onepage-wrapper, html {
 
 .onepage-pagination {
   position: absolute;
-  right: 10px;
-  top: 50%;
+  right: 50%;
+  top: 90%;
   z-index: 5;
   list-style: none;
   margin: 0;
@@ -40,12 +39,13 @@ body, .onepage-wrapper, html {
 .onepage-pagination li {
   padding: 0;
   text-align: center;
+  display:inline;
 }
 .onepage-pagination li a{
   padding: 10px;
   width: 4px;
   height: 4px;
-  display: block;
+
   
 }
 .onepage-pagination li a:before{
@@ -65,7 +65,7 @@ body, .onepage-wrapper, html {
   background: none;
   border: 1px solid black;
   margin-top: -4px;
-  left: 8px;
+  margin-left: -4px;
 }
 
 .disabled-onepage-scroll, .disabled-onepage-scroll .wrapper {
