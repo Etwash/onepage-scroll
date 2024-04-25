@@ -73,6 +73,11 @@ const chaptersData = [
 let currentChapterIndex = 0;
 let currentPageIndex = 0;
 
+function displayPageNumber(pageIndex, totalPages) {
+    const pageNumberElement = document.getElementById("page-number");
+    pageNumberElement.textContent = `Page ${pageIndex + 1} of ${totalPages}`;
+}
+
 function displayPage(chapterIndex, pageIndex) {
     const chapter = chaptersData[chapterIndex];
     const bookContainer = document.getElementById("book-container");
@@ -109,6 +114,9 @@ function displayPage(chapterIndex, pageIndex) {
     // Update the progress bar based on the current page index within the chapter
     updateProgressBar(chapterIndex, pageIndex);
 
+    // Display the current page number
+    displayPageNumber(pageIndex, chapter.pages.length);
+
     // Add a class to the active step block
     const activeStepBlock = document.querySelector('.step-block.active');
     if (activeStepBlock) {
@@ -117,6 +125,8 @@ function displayPage(chapterIndex, pageIndex) {
     const currentStepBlock = document.querySelector(`.step-block__${chapterIndex + 1}`);
     currentStepBlock.classList.add('active');
 }
+
+
 
 function updateProgressBar(chapterIndex, pageIndex) {
     const totalChapters = chaptersData.length;

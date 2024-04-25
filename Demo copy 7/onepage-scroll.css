@@ -127,3 +127,15 @@
   transform: scale(1.5); /* Increase the size by 20% */
   /* Add any other styling properties as needed */
 }
+#page-number {
+  text-align: center; /* Center the text horizontally */
+  padding: 10px; /* Add padding for spacing */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  color: #fff; /* White text color */
+  border-radius: 5px; /* Rounded corners */
+  position: absolute; /* Position the element absolutely */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust to center perfectly */
+  top: 70%; /* Adjust the top position as needed */
+  z-index: 2; /* Ensure it's above other content */
+}
