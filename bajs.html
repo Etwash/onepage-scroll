@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Process with Webflow</title>
+    <style>
+        /* CSS styles */
+        .wrap-block__inner-fw {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+        }
+
+        .stepper-wrap {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .step-block {
+            flex: 0 1 20%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #ccc; /* Add border */
+            border-radius: 5px; /* Add border radius */
+            padding: 10px; /* Add padding */
+        }
+
+        .step-block__text-number {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .step-block__progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #ccc;
+            margin-bottom: 10px;
+            overflow: hidden; /* Hide overflow */
+        }
+
+        .step-block__progress-bar-inner {
+            height: 100%;
+            background-color: #ADD8E6; /* Light blue */
+            transition: width 0.5s ease; /* Transition for smooth width change */
+        }
+
+        .step-block__progress-bar-inner.fifth-blue {
+            background-color: #0c2591; /* Dark blue */
+        }
+
+        .next-page-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap _w-custom w60-60">
+        <div class="wrap-block__inner-fw inner-fw__bottom">
+            <div class="stepper-wrap">
+                <div class="step-block step-block__1">
+                    <div class="step-block__text-number">01</div>
+                    <div class="step-block__progress-bar">
+                        <div class="step-block__progress-bar-inner progress-bar__1"></div>
+                    </div>
+                </div>
+                <div class="step-block step-block__2">
+                    <div class="step-block__text-number">02</div>
+                    <div class="step-block__progress-bar">
+                        <div class="step-block__progress-bar-inner progress-bar__2"></div>
+                    </div>
+                </div>
+                <div class="step-block step-block__3">
+                    <div class="step-block__text-number">03</div>
+                    <div class="step-block__progress-bar">
+                        <div class="step-block__progress-bar-inner progress-bar__3"></div>
+                    </div>
+                </div>
+            </div>
+            <button class="next-page-btn">Next Page</button>
+        </div>
+    </div>
+
+    <script>
+        // Select the next page button and progress bars
+        const nextPageBtn = document.querySelector('.next-page-btn');
+        const progressBars = document.querySelectorAll('.step-block__progress-bar-inner');
+
+        // Initialize variables for current page and step
+        let currentPage = 0;
+        let currentStep = 0;
+        let buttonPresses = 0; // Track the number of button presses
+
+        // Add event listener to the next page button
+        nextPageBtn.addEventListener('click', () => {
+            // Increment button presses
+            buttonPresses++;
+
+            // Check if button presses reach 5
+            if (buttonPresses === 5) {
+                // Turn progress bar dark blue
+                progressBars.forEach((progressBar, index) => {
+                    if (index === currentStep) {
+                        progressBar.classList.add('fifth-blue');
+                        progressBar.style.width = '100%'; // Set width to 100% for step one when turning dark blue
+                    }
+                });
+            }
+
+            // Increment current page
+            currentPage++;
+
+            // Check if current page is the last page of a chapter
+            if (currentPage === 5) {
+                // Reset current page
+                currentPage = 0;
+
+                // Move to the next step
+                currentStep++;
+
+                // Reset button presses
+                buttonPresses = 0;
+
+                // Reset current step if it exceeds the total number of progress bars
+                if (currentStep === progressBars.length) {
+                    currentStep = 0;
+                }
+            }
+
+            // Update progress bar based on current step and page
+            updateProgressBar(currentStep, currentPage);
+        });
+
+        // Function to update progress bar based on current step and page
+        function updateProgressBar(stepIndex, page) {
+            progressBars.forEach((progressBar, index) => {
+                if (index === stepIndex) {
+                    if (page === 5) {
+                        // If it's the last page, set width to 100%
+                        progressBar.style.width = '100%';
+                    } else {
+                        // Otherwise, set width based on current page
+                        progressBar.style.width = `${(page * 20)}%`;
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+/* Your existing CSS styles */
+
+/* Define styles for the book container */
+#book-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Define styles for chapter sections */
+.section {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Define styles for pages */
+.page {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* Define styles for active pages */
+.page.active {
+  opacity: 1;
+}
+
+/* Define fade-in animation */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+/* Apply fade-in animation to active pages */
+.page.active {
+  animation: fadeIn 1s ease;
+  opacity: 1; /* Ensure opacity is set to 1 at the end of the animation */
+}
+
+/* Add your progress bar styles here */
+.wrap-block__inner-fw {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    min-height: 400px;
+    margin: 0 auto;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.inner-fw__bottom {
+    padding-bottom: 0;
+}
+
+.inner-fw__text-block {
+    width: 100%;
+    font-size: 2.5rem;
+    line-height: 1.3;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+    color: #333;
+}
+
+/* Your existing CSS styles */
+
+/* Add your progress bar styles here */
+.stepper-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.step-block {
+  width: 15%;
+  position: relative;
+}
+
+.step-block__text-number {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.step-block__progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.step-block__progress-bar-inner {
+  height: 100%;
+  background-color: #007bff;
+  width: 0;
+  transition: width 0.3s ease-in-out;
+}
+
+.step-block__text-title {
+  opacity: 0.5;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.step-block:hover .step-block__text-title {
+  opacity: 1;
+}
+
+.step-block__text-description {
+  display: none;
+  opacity: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.step-block:hover .step-block__text-description {
+  display: block;
+  opacity: 1;
+}

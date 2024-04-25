@@ -1,0 +1,51 @@
+/* styles.css */
+
+/* Reset default margins and paddings */
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+/* Define styles for the book container */
+#book-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Define styles for chapter sections */
+.section {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Define styles for pages */
+.page {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* Define styles for active pages */
+.page.active {
+  opacity: 1;
+}
+
+/* Define fade-in animation */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+/* Apply fade-in animation to active pages */
+.page.active {
+  animation: fadeIn 1s ease;
+  opacity: 1; /* Ensure opacity is set to 1 at the end of the animation */
+}

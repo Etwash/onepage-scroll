@@ -1,0 +1,129 @@
+/* Your existing CSS styles */
+
+/* Define styles for the book container */
+#book-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Define styles for chapter sections */
+.section {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Define styles for pages */
+.page {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* Define styles for active pages */
+.page.active {
+  opacity: 1;
+}
+
+/* Define fade-in animation */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+/* Apply fade-in animation to active pages */
+.page.active {
+  animation: fadeIn 1s ease;
+  opacity: 1; /* Ensure opacity is set to 1 at the end of the animation */
+}
+
+/* Center the wrap-block__inner-fw element in the middle of the screen */
+.wrap-block__inner-fw {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%; /* Set the width to 90% of the viewport */
+  max-width: 800px; /* Set a maximum width to prevent it from becoming too wide */
+  height: 300px; /* Set the height to 300 pixels */
+  /* Add any other styling properties as needed */
+}
+
+
+.inner-fw__bottom {
+    padding-bottom: 0;
+}
+
+/* Your existing CSS styles */
+
+/* Add your progress bar styles here */
+.stepper-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.step-block {
+  width: 15%;
+  position: relative;
+}
+
+.step-block__text-number {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.step-block__progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.step-block__progress-bar-inner {
+  height: 100%;
+  background-color: #007bff;
+  width: 0;
+  transition: width 0.3s ease-in-out;
+}
+
+.step-block__text-title {
+  opacity: 0.5;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.step-block:hover .step-block__text-title {
+  opacity: 1;
+}
+
+.step-block__text-description {
+  display: none;
+  opacity: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.step-block:hover .step-block__text-description {
+  display: block;
+  opacity: 1;
+}
+
+/* Increase the size of the active step block */
+.step-block.active {
+  transform: scale(1.5); /* Increase the size by 20% */
+  /* Add any other styling properties as needed */
+}
